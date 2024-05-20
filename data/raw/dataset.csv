@@ -1,0 +1,145 @@
+substance_1,substance_2,x_1,x_2,T,gamma_1,gamma_2
+water,ethanol,0,1,305,2.69012,1
+water,ethanol,0.2,0.8,305,1.98665,1.03042
+water,ethanol,0.4,0.6,305,1.64071,1.11962
+water,ethanol,0.6,0.4,305,1.35956,1.35896
+water,ethanol,0.8,0.2,305,1.12435,2.16471
+water,ethanol,1,0,305,1,7.52547
+water,ethanol,0,1,310,2.7079,1
+water,ethanol,0.2,0.8,310,1.99412,1.0309
+water,ethanol,0.4,0.6,310,1.64105,1.1218
+water,ethanol,0.6,0.4,310,1.35799,1.36333
+water,ethanol,0.8,0.2,310,1.12336,2.16966
+water,ethanol,1,0,310,1,7.45659
+water,ethanol,0,1,315,2.72398,1
+water,ethanol,0.2,0.8,315,2.00102,1.03133
+water,ethanol,0.4,0.6,315,1.64129,1.12382
+water,ethanol,0.6,0.4,315,1.35645,1.36742
+water,ethanol,0.8,0.2,315,1.1224,2.17414
+water,ethanol,1,0,315,1,7.39004
+ethanol,water,0,1,305,7.52547,1
+ethanol,water,0.2,0.8,305,2.16471,1.12435
+ethanol,water,0.4,0.6,305,1.35896,1.35956
+ethanol,water,0.6,0.4,305,1.11962,1.64071
+ethanol,water,0.8,0.2,305,1.03042,1.98665
+ethanol,water,1,0,305,1,2.69012
+ethanol,water,0,1,310,7.45659,1
+ethanol,water,0.2,0.8,310,2.16966,1.12336
+ethanol,water,0.4,0.6,310,1.36333,1.35799
+ethanol,water,0.6,0.4,310,1.1218,1.64105
+ethanol,water,0.8,0.2,310,1.0309,1.99412
+ethanol,water,1,0,310,1,2.7079
+ethanol,water,0,1,315,7.39004,1
+ethanol,water,0.2,0.8,315,2.17414,1.1224
+ethanol,water,0.4,0.6,315,1.36742,1.35645
+ethanol,water,0.6,0.4,315,1.12382,1.64129
+ethanol,water,0.8,0.2,315,1.03133,2.00102
+ethanol,water,1,0,315,1,2.72398
+methanol,methyl acetate,0,1,305,2.98166,1
+methanol,methyl acetate,0.2,0.8,305,1.91959,1.04895
+methanol,methyl acetate,0.4,0.6,305,1.4132,1.19485
+methanol,methyl acetate,0.6,0.4,305,1.15694,1.45793
+methanol,methyl acetate,0.8,0.2,305,1.03515,1.88701
+methanol,methyl acetate,1,0,305,1,2.56182
+methanol,methyl acetate,0,1,310,2.93017,1
+methanol,methyl acetate,0.2,0.8,310,1.90523,1.0479
+methanol,methyl acetate,0.4,0.6,310,1.40944,1.19126
+methanol,methyl acetate,0.6,0.4,310,1.15623,1.45069
+methanol,methyl acetate,0.8,0.2,310,1.03512,1.87528
+methanol,methyl acetate,1,0,310,1,2.54612
+methanol,methyl acetate,0,1,315,2.88101,1
+methanol,methyl acetate,0.2,0.8,315,1.89121,1.04688
+methanol,methyl acetate,0.4,0.6,315,1.40569,1.18778
+methanol,methyl acetate,0.6,0.4,315,1.1555,1.44363
+methanol,methyl acetate,0.8,0.2,315,1.03509,1.86375
+methanol,methyl acetate,1,0,315,1,2.53051
+methyl acetate,methanol,0,1,305,2.56182,1
+methyl acetate,methanol,0.2,0.8,305,1.88701,1.03515
+methyl acetate,methanol,0.4,0.6,305,1.45793,1.15694
+methyl acetate,methanol,0.6,0.4,305,1.19485,1.4132
+methyl acetate,methanol,0.8,0.2,305,1.04895,1.91959
+methyl acetate,methanol,1,0,305,1,2.98166
+methyl acetate,methanol,0,1,310,2.54612,1
+methyl acetate,methanol,0.2,0.8,310,1.87528,1.03512
+methyl acetate,methanol,0.4,0.6,310,1.45069,1.15623
+methyl acetate,methanol,0.6,0.4,310,1.19126,1.40944
+methyl acetate,methanol,0.8,0.2,310,1.0479,1.90523
+methyl acetate,methanol,1,0,310,1,2.93017
+methyl acetate,methanol,0,1,315,2.53051,1
+methyl acetate,methanol,0.2,0.8,315,1.86375,1.03509
+methyl acetate,methanol,0.4,0.6,315,1.44363,1.1555
+methyl acetate,methanol,0.6,0.4,315,1.18778,1.40569
+methyl acetate,methanol,0.8,0.2,315,1.04688,1.89121
+methyl acetate,methanol,1,0,315,1,2.88101
+benzene,toluene,0,1,305,0.961696,1
+benzene,toluene,0.2,0.8,305,0.973487,0.99862
+benzene,toluene,0.4,0.6,305,0.983835,0.994065
+benzene,toluene,0.6,0.4,305,0.992197,0.985621
+benzene,toluene,0.8,0.2,305,0.997879,0.97245
+benzene,toluene,1,0,305,1,0.953608
+benzene,toluene,0,1,310,0.962692,1
+benzene,toluene,0.2,0.8,310,0.97421,0.998654
+benzene,toluene,0.4,0.6,310,0.984298,0.994215
+benzene,toluene,0.6,0.4,310,0.992433,0.986003
+benzene,toluene,0.8,0.2,310,0.997946,0.973219
+benzene,toluene,1,0,310,1,0.954966
+benzene,toluene,0,1,315,0.963631,1
+benzene,toluene,0.2,0.8,315,0.974891,0.998685
+benzene,toluene,0.4,0.6,315,0.984733,0.994358
+benzene,toluene,0.6,0.4,315,0.992654,0.986364
+benzene,toluene,0.8,0.2,315,0.998009,0.973942
+benzene,toluene,1,0,315,1,0.956242
+toluene,benzene,0,1,305,0.953608,1
+toluene,benzene,0.2,0.8,305,0.97245,0.997879
+toluene,benzene,0.4,0.6,305,0.985621,0.992197
+toluene,benzene,0.6,0.4,305,0.994065,0.983835
+toluene,benzene,0.8,0.2,305,0.99862,0.973487
+toluene,benzene,1,0,305,1,0.961696
+toluene,benzene,0,1,310,0.954966,1
+toluene,benzene,0.2,0.8,310,0.973219,0.997946
+toluene,benzene,0.4,0.6,310,0.986003,0.992433
+toluene,benzene,0.6,0.4,310,0.994215,0.984298
+toluene,benzene,0.8,0.2,310,0.998654,0.97421
+toluene,benzene,1,0,310,1,0.962692
+toluene,benzene,0,1,315,0.956242,1
+toluene,benzene,0.2,0.8,315,0.973942,0.998009
+toluene,benzene,0.4,0.6,315,0.986364,0.992654
+toluene,benzene,0.6,0.4,315,0.994358,0.984733
+toluene,benzene,0.8,0.2,315,0.998685,0.974891
+toluene,benzene,1,0,315,1,0.963631
+hexane,ethanol,0,1,305,7.6333,1
+hexane,ethanol,0.2,0.8,305,3.85989,1.07724
+hexane,ethanol,0.4,0.6,305,2.32881,1.33786
+hexane,ethanol,0.6,0.4,305,1.11247,5.28551
+hexane,ethanol,0.8,0.2,305,1.11242,5.28688
+hexane,ethanol,1,0,305,1,25.3703
+hexane,ethanol,0,1,310,7.54864,1
+hexane,ethanol,0.2,0.8,310,3.8263,1.07696
+hexane,ethanol,0.4,0.6,310,2.31236,1.33657
+hexane,ethanol,0.6,0.4,310,1.13497,4.63939
+hexane,ethanol,0.8,0.2,310,1.13491,4.64062
+hexane,ethanol,1,0,310,1,23.8488
+hexane,ethanol,0,1,315,7.46471,1
+hexane,ethanol,0.2,0.8,315,3.79283,1.07669
+hexane,ethanol,0.4,0.6,315,2.29596,1.33527
+hexane,ethanol,0.6,0.4,315,1.16474,4.03761
+hexane,ethanol,0.8,0.2,315,1.16467,4.0386
+hexane,ethanol,1,0,315,1,22.465
+ethanol,hexane,0,1,305,25.3703,1
+ethanol,hexane,0.2,0.8,305,5.28688,1.11242
+ethanol,hexane,0.4,0.6,305,5.28551,1.11247
+ethanol,hexane,0.6,0.4,305,1.33786,2.32881
+ethanol,hexane,0.8,0.2,305,1.07724,3.85989
+ethanol,hexane,1,0,305,1,7.6333
+ethanol,hexane,0,1,310,23.8488,1
+ethanol,hexane,0.2,0.8,310,4.64062,1.13491
+ethanol,hexane,0.4,0.6,310,4.63939,1.13497
+ethanol,hexane,0.6,0.4,310,1.33657,2.31236
+ethanol,hexane,0.8,0.2,310,1.07696,3.8263
+ethanol,hexane,1,0,310,1,7.54864
+ethanol,hexane,0,1,315,22.465,1
+ethanol,hexane,0.2,0.8,315,4.0386,1.16467
+ethanol,hexane,0.4,0.6,315,4.03761,1.16474
+ethanol,hexane,0.6,0.4,315,1.33527,2.29596
+ethanol,hexane,0.8,0.2,315,1.07669,3.79283
+ethanol,hexane,1,0,315,1,7.46471
