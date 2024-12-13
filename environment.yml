@@ -1,6 +1,7 @@
 name: sciml_venv
 channels:
   - conda-forge
+  - nvidia
   - pytorch
   - defaults
 dependencies:
@@ -9,8 +10,10 @@ dependencies:
   - numpy=1.26.4
   - pandas=2.2.2
   - pip=24.0
-  - pytorch=2.3.0
+  - pytorch=2.3.0 
+  - cudatoolkit=11.8
   - scikit-learn=1.4.2
+  - skorch=0.15.0
   - streamlit=1.34.0
   - pip:
     - ugropy==2.0.5
