@@ -1,4 +1,4 @@
-""" 
+"""
 Class designed to process the raw dataset containing the name of substances, to
 a dataset with r and q values from UNIFAC.
 
@@ -12,11 +12,11 @@ from ugropy import Groups
 class DataProcessing:
     def __init__(self) -> None:
         # Read csv file
-        self.raw_df = pd.read_csv("data/raw/dataset.csv")
+        self.raw_df = pd.read_csv("../data/raw/toy_problem_raw_dataset.csv")
 
         # Load UNIFAC parameters
         self.unifac_parameters = pd.read_csv(
-            "data/unifac_parameters/unifac_r_and_q.csv"
+            "../data/unifac_parameters/unifac_r_and_q.csv"
         )
 
     def __calculate_r(self, substance: str) -> float:
@@ -78,4 +78,6 @@ class DataProcessing:
         processed_df = self.raw_df[new_order]
 
         # Save table
-        processed_df.to_csv("data/processed/input_dataset.csv", index=False)
+        processed_df.to_csv(
+            "../data/processed/toy_problem_input_dataset.csv", index=False
+        )

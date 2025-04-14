@@ -15,5 +15,6 @@ dependencies:
   - scikit-learn=1.4.2
   - skorch=0.15.0
   - streamlit=1.34.0
+  - seaborn=0.13.2
   - pip:
     - ugropy==2.0.5
