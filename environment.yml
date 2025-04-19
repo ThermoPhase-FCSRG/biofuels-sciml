@@ -16,5 +16,6 @@ dependencies:
   - skorch=0.15.0
   - streamlit=1.34.0
   - seaborn=0.13.2
+  - torchmetrics=1.7.1
   - pip:
     - ugropy==2.0.5
