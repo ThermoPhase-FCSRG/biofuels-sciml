@@ -6,17 +6,41 @@ a dataset with r and q values from UNIFAC.
 
 import pandas as pd
 
-from ugropy import Groups
+from pathlib import Path
 
 
 class DataProcessing:
+    # Number of groups per substances
+    GROUPS = {
+        "benzene": {"ACH": 6},
+        "butanol": {"CH3": 1, "CH2": 3, "OH": 1},
+        "cyclohexane": {"CH2": 6},
+        "cyclooctane": {"CH2": 8},
+        "decane": {"CH3": 2, "CH2": 8},
+        "dodecane": {"CH3": 2, "CH2": 10},
+        "ethanol": {"CH3": 1, "CH2": 1, "OH": 1},
+        "heptane": {"CH3": 2, "CH2": 5},
+        "isobutanol": {"CH3": 2, "CH": 1, "CH2": 1, "OH": 1},
+        "methanol": {"CH3OH": 1},
+        "methyl laurate": {"CH3": 2, "CH2": 10, "COO": 1},
+        "methyl myristate": {"CH3": 2, "CH2": 12, "COO": 1},
+        "methyl stearate": {"CH3": 2, "CH2": 16, "COO": 1},
+        "nonane": {"CH3": 2, "CH2": 7},
+        "octane": {"CH3": 2, "CH2": 6},
+        "toluene": {"AC": 5, "ACCH3": 1},
+        "undecane": {"CH3": 2, "CH2": 9},
+    }
+
     def __init__(self) -> None:
+        # Define the data path
+        DATA_PATH = Path("../data")
+
         # Read csv file
-        self.raw_df = pd.read_csv("../data/raw/toy_problem_raw_dataset.csv")
+        self.raw_df = pd.read_csv(DATA_PATH / "raw" / "toy_problem_raw_dataset.csv")
 
         # Load UNIFAC parameters
         self.unifac_parameters = pd.read_csv(
-            "../data/unifac_parameters/unifac_r_and_q.csv"
+            DATA_PATH / "unifac_parameters" / "unifac_r_and_q.csv"
         )
 
     def __calculate_r(self, substance: str) -> float:
@@ -25,8 +49,9 @@ class DataProcessing:
             "R (volume)"
         ].to_dict()
 
-        init_substance = Groups(substance)
-        substance_group = init_substance.unifac.subgroups
+        substance_group = self.GROUPS.get(substance, None)
+        if substance_group is None:
+            raise ValueError(f"Substance {substance} not found in UNIFAC groups.")
 
         # Calculate r value
         initial_r = 0
@@ -41,8 +66,9 @@ class DataProcessing:
             "Q (area)"
         ].to_dict()
 
-        init_substance = Groups(substance)
-        substance_group = init_substance.unifac.subgroups
+        substance_group = self.GROUPS.get(substance, None)
+        if substance_group is None:
+            raise ValueError(f"Substance {substance} not found in UNIFAC groups.")
 
         # Calculate r value
         initial_q = 0
