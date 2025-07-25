@@ -28,6 +28,8 @@ class DataProcessing:
         "isopropanol": {"CH3": 2, "CH": 1, "OH": 1},
         "methanol": {"CH3OH": 1},
         "methyl acetate": {"CH3": 2, "COO": 1},
+        "methyl butyrate": {"CH3": 2, "CH2": 2, "COO": 1},
+        "methyl decanoate": {"CH3": 2, "CH2": 8, "COO": 1},
         "methyl laurate": {"CH3": 2, "CH2": 10, "COO": 1},
         "methyl linoleate": {"CH3": 2, "CH2": 12, "CH=CH": 2, "COO": 1},
         "methyl myristate": {"CH3": 2, "CH2": 12, "COO": 1},
@@ -38,6 +40,7 @@ class DataProcessing:
         "nonane": {"CH3": 2, "CH2": 7},
         "octane": {"CH3": 2, "CH2": 6},
         "propanol": {"CH3": 1, "CH2": 2, "OH": 1},
+        "propyl acetate": {"CH3": 2, "CH2": 2, "COO": 1},
         "toluene": {"AC": 5, "ACCH3": 1},
         "undecane": {"CH3": 2, "CH2": 9},
     }
@@ -109,7 +112,9 @@ class DataProcessing:
         ]
         new_order += ["T"]
         new_order += [
-            col for i in range(1, len(substance_columns) + 1) for col in [f"gamma_{i}"]
+            col
+            for i in range(1, len(substance_columns) + 1)
+            for col in [f"ln_gamma_{i}"]
         ]
 
         processed_df = self.raw_df[new_order]
