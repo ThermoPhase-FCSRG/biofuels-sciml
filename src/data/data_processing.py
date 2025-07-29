@@ -23,8 +23,11 @@ class DataProcessing:
         "ethyl octanoate": {"CH3": 2, "CH2": 7, "COO": 1},
         "ethyl decanoate": {"CH3": 2, "CH2": 9, "COO": 1},
         "ethyl laurate": {"CH3": 2, "CH2": 11, "COO": 1},
+        "ethyl linoleate": {"CH3": 2, "CH2": 13, "CH=CH": 2, "COO": 1},
         "ethyl myristate": {"CH3": 2, "CH2": 13, "COO": 1},
+        "ethyl oleate": {"CH3": 2, "CH2": 15, "CH=CH": 1, "COO": 1},
         "ethyl palmitate": {"CH3": 2, "CH2": 15, "COO": 1},
+        "ethyl stearate": {"CH3": 2, "CH2": 17, "COO": 1},
         "ethylbenzene": {"ACH": 5, "ACCH2": 1, "CH3": 1},
         "ethyl propionate": {"CH3": 2, "CH2": 2, "COO": 1},
         "heptane": {"CH3": 2, "CH2": 5},
@@ -38,6 +41,7 @@ class DataProcessing:
         "methyl laurate": {"CH3": 2, "CH2": 10, "COO": 1},
         "methyl linoleate": {"CH3": 2, "CH2": 12, "CH=CH": 2, "COO": 1},
         "methyl myristate": {"CH3": 2, "CH2": 12, "COO": 1},
+        "methyl octanoate": {"CH3": 2, "CH2": 6, "COO": 1},
         "methyl oleate": {"CH3": 2, "CH2": 14, "CH=CH": 1, "COO": 1},
         "methyl palmitate": {"CH3": 2, "CH2": 14, "COO": 1},
         "methyl propionate": {"CH3": 2, "CH2": 1, "COO": 1},
@@ -49,18 +53,21 @@ class DataProcessing:
         "toluene": {"AC": 5, "ACCH3": 1},
         "undecane": {"CH3": 2, "CH2": 9},
     }
+    # Define the data path
+    INPUT_DATA_PATH = Path("../data/raw")
+    UNIFAC_DATA_PATH = Path("../data/models_parameters")
+    OUTPUT_DATA_PATH = Path("../data/processed")
 
-    def __init__(self) -> None:
-        # Define the data path
-        DATA_PATH = Path("../data")
-
+    def __init__(self, input_csv: str, output_csv: str) -> None:
         # Read csv file
-        self.raw_df = pd.read_csv(DATA_PATH / "raw" / "toy_problem_raw_dataset.csv")
+        self.raw_df = pd.read_csv(self.INPUT_DATA_PATH / input_csv)
 
         # Load UNIFAC parameters
         self.unifac_parameters = pd.read_csv(
-            DATA_PATH / "unifac_parameters" / "unifac_r_and_q.csv"
+            self.UNIFAC_DATA_PATH / "unifac_r_and_q.csv"
         )
+        # Initialize output csv path
+        self.output_csv = output_csv
 
     def __calculate_r(self, substance: str) -> float:
         # Get UNIFAC R values
@@ -70,7 +77,7 @@ class DataProcessing:
 
         substance_group = self.GROUPS.get(substance, None)
         if substance_group is None:
-            raise ValueError(f"Substance {substance} not found in UNIFAC groups.")
+            return 0.0
 
         # Calculate r value
         initial_r = 0
@@ -87,7 +94,7 @@ class DataProcessing:
 
         substance_group = self.GROUPS.get(substance, None)
         if substance_group is None:
-            raise ValueError(f"Substance {substance} not found in UNIFAC groups.")
+            return 0.0
 
         # Calculate r value
         initial_q = 0
@@ -102,29 +109,31 @@ class DataProcessing:
             col for col in self.raw_df.columns if col.startswith("substance")
         ]
 
-        for index, col in enumerate(substance_columns, start=1):
-            self.raw_df[f"r_{index}"] = self.raw_df[col].apply(self.__calculate_r)
-            self.raw_df[f"q_{index}"] = self.raw_df[col].apply(self.__calculate_q)
+        for i, col in enumerate(substance_columns, start=1):
+            self.raw_df[[f"r_{i}", f"q_{i}"]] = self.raw_df[col].apply(
+                lambda val: pd.Series(
+                    [self.__calculate_r(val), self.__calculate_q(val)]
+                )
+            )
 
         # Drop substance columns
-        self.raw_df.drop(substance_columns, axis=1, inplace=True)
+        if "FP" not in self.raw_df.columns:
+            self.raw_df.drop(columns=substance_columns, inplace=True)
 
         # Reorder the columns
+        num_substances = len(substance_columns)
         new_order = [
             col
-            for i in range(1, len(substance_columns) + 1)
-            for col in [f"r_{i}", f"q_{i}", f"x_{i}"]
-        ]
-        new_order += ["T"]
-        new_order += [
-            col
-            for i in range(1, len(substance_columns) + 1)
-            for col in [f"ln_gamma_{i}"]
+            for i in range(1, num_substances + 1)
+            for col in (f"r_{i}", f"q_{i}", f"x_{i}")
         ]
 
-        processed_df = self.raw_df[new_order]
+        if "FP" in self.raw_df.columns:
+            new_order += ["MM", "lnPvap", "Method", "substance_1", "substance_2", "FP"]
+        else:
+            new_order += ["T"] + [f"ln_gamma_{i}" for i in range(1, num_substances + 1)]
 
         # Save table
-        processed_df.to_csv(
-            "../data/processed/toy_problem_input_dataset.csv", index=False
+        self.raw_df[new_order].to_csv(
+            self.OUTPUT_DATA_PATH / self.output_csv, index=False
         )
