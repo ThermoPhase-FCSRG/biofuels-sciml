@@ -1,4 +1,9 @@
 {
+  "_comment": "This JSON file contains parameters required for calculating vapor pressure using the group-contribution method (Ceriani et al., 2013) and Antoine's equation.",
+  "_sources": {
+    "Ceriani": "Group-contribution method for vapor pressure estimation (Ceriani, R.; Gani, R.; Liu, Y. A., 2013, Fluid Phase Equilibria, 337, 53–59, DOI:10.1016/j.fluid.2012.09.039).",
+    "Antoine": "Antoine equation; constants retrieved from NIST Chemistry WebBook."
+  },
    "methyl octanoate":{
       "FP": 348.6,
       "model": "Ceriani",

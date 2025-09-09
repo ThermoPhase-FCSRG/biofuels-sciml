@@ -1,3 +1,15 @@
+"""
+UNIFAC group assignments for each compound in the database.
+
+Parameters were taken from:
+Magnussen, T.; Rasmussen, P.; Fredenslund, A. (1981)
+“UNIFAC parameter table for prediction of liquid–liquid equilibria,”
+Ind. Eng. Chem. Process Des. Dev., 20.
+
+This dictionary specifies which UNIFAC subgroups are present
+in each compound, and how many of each subgroup occur.
+"""
+
 GROUPS = {
     "benzene": {9: 6},
     "butanol": {1: 1, 2: 3, 14: 1},
@@ -37,6 +49,6 @@ GROUPS = {
     "octane": {1: 2, 2: 6},
     "propanol": {1: 1, 2: 2, 14: 1},
     "propyl acetate": {1: 2, 2: 2, 77: 1},
-    "toluene": {"AC": 5, 11: 1},
+    "toluene": {9: 5, 11: 1},
     "undecane": {1: 2, 2: 9},
 }
