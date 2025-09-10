@@ -54,9 +54,9 @@ class DataProcessing:
         "undecane": {"CH3": 2, "CH2": 9},
     }
     # Define the data path
-    INPUT_DATA_PATH = Path("../data/raw")
-    UNIFAC_DATA_PATH = Path("../data/models_parameters")
-    OUTPUT_DATA_PATH = Path("../data/processed")
+    INPUT_DATA_PATH = Path("../data/private/raw")
+    UNIFAC_DATA_PATH = Path("../data/public/models_parameters")
+    OUTPUT_DATA_PATH = Path("../data/private/processed")
 
     def __init__(self, input_csv: str, output_csv: str) -> None:
         # Read csv file
