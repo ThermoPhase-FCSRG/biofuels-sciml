@@ -1,0 +1,199 @@
+{
+  "_comment": "This JSON file contains parameters required for calculating vapor pressure using the group-contribution method (Ceriani et al., 2013) and Antoine's equation.",
+  "_sources": {
+    "Ceriani": "Group-contribution method for vapor pressure estimation (Ceriani, R.; Gani, R.; Liu, Y. A., 2013, Fluid Phase Equilibria, 337, 53–59, DOI:10.1016/j.fluid.2012.09.039).",
+    "Antoine": "Antoine equation; constants retrieved from NIST Chemistry WebBook."
+  },
+   "methyl octanoate":{
+      "FP": 348.6,
+      "model": "Ceriani",
+      "Mi": 158.238,
+      "nCH3": 2,
+      "nCH2": 6,
+      "nCDC": 0,
+      "nCOO": 1,
+      "Ncs": 1
+   },
+   "methyl decanoate":{
+      "FP": 374.7,
+      "model": "Ceriani",
+      "Mi": 186.2912,
+      "nCH3": 2,
+      "nCH2": 8,
+      "nCDC": 0,
+      "nCOO": 1,
+      "Ncs": 1
+   },
+   "methyl laurate":{
+      "FP": 398.4,
+      "model": "Ceriani",
+      "Mi": 214.3443,
+      "nCH3": 2,
+      "nCH2": 10,
+      "nCDC": 0,
+      "nCOO": 1,
+      "Ncs": 1
+   },
+   "methyl myristate":{
+      "FP": 419.7,
+      "model": "Ceriani",
+      "Mi": 242.3975,
+      "nCH3": 2,
+      "nCH2": 12,
+      "nCDC": 0,
+      "nCOO": 1,
+      "Ncs": 1
+   },
+   "methyl palmitate":{
+      "FP": 440.3,
+      "model": "Ceriani",
+      "Mi": 270.4507,
+      "nCH3": 2,
+      "nCH2": 14,
+      "nCDC": 0,
+      "nCOO": 1,
+      "Ncs": 1
+   },
+   "methyl stearate":{
+      "FP": 455.5,
+      "model": "Ceriani",
+      "Mi": 298.5038,
+      "nCH3": 2,
+      "nCH2": 16,
+      "nCDC": 0,
+      "nCOO": 1,
+      "Ncs": 1
+   },
+   "methyl oleate":{
+      "FP": 445.8,
+      "model": "Ceriani",
+      "Mi": 296.4879,
+      "nCH3": 2,
+      "nCH2": 14,
+      "nCDC": 2,
+      "nCOO": 1,
+      "Ncs": 1
+   },
+   "ethyl octanoate":{
+      "FP": 356.15,
+      "model": "Ceriani",
+      "Mi": 172.2646,
+      "nCH3": 2,
+      "nCH2": 7,
+      "nCDC": 0,
+      "nCOO": 1,
+      "Ncs": 2
+   },
+   "ethyl decanoate":{
+      "FP": 380.35,
+      "model": "Ceriani",
+      "Mi": 200.3178,
+      "nCH3": 2,
+      "nCH2": 9,
+      "nCDC": 0,
+      "nCOO": 1,
+      "Ncs": 2
+   },
+   "ethyl laurate":{
+      "FP": 404.18,
+      "model": "Ceriani",
+      "Mi": 228.3709,
+      "nCH3": 2,
+      "nCH2": 11,
+      "nCDC": 0,
+      "nCOO": 1,
+      "Ncs": 2
+   },
+   "ethyl myristate":{
+      "FP": 425.72,
+      "model": "Ceriani",
+      "Mi": 256.4241,
+      "nCH3": 2,
+      "nCH2": 13,
+      "nCDC": 0,
+      "nCOO": 1,
+      "Ncs": 2
+   },
+   "ethyl palmitate":{
+      "FP": 443.03,
+      "model": "Ceriani",
+      "Mi": 284.4772,
+      "nCH3": 2,
+      "nCH2": 15,
+      "nCDC": 0,
+      "nCOO": 1,
+      "Ncs": 2
+   },
+   "ethyl stearate":{
+      "FP": 458.3,
+      "model": "Ceriani",
+      "Mi": 312.5304,
+      "nCH3": 2,
+      "nCH2": 17,
+      "nCDC": 0,
+      "nCOO": 1,
+      "Ncs": 2
+   },
+   "ethyl oleate":{
+      "FP": 457.7,
+      "model": "Ceriani",
+      "Mi": 310.5145,
+      "nCH3": 2,
+      "nCH2": 15,
+      "nCDC": 2,
+      "nCOO": 1,
+      "Ncs": 2
+   },
+   "ethyl linoleate":{
+      "FP": 455.2,
+      "model": "Ceriani",
+      "Mi": 308.4986,
+      "nCH3": 2,
+      "nCH2": 13,
+      "nCDC": 4,
+      "nCOO": 1,
+      "Ncs": 2
+   },
+   "ethanol":{
+      "FP": 287.0,
+      "model": "Antoine",
+      "A": 7.37,
+      "B": 1670.41,
+      "C": -40.19
+   },
+   "dodecane":{
+      "FP": 353.6,
+      "model": "Antoine",
+      "A": 6.11,
+      "B": 1625.93,
+      "C": -92.84
+   },
+   "octane":{
+      "FP": 287.65,
+      "model": "Antoine",
+      "A": 7.20,
+      "B": 1936.28,
+      "C": -20.14
+   },
+   "methyl butyrate":{
+      "FP": 284.55,
+      "model": "Antoine",
+      "A": 4.72086,
+      "B": 1758.314,
+      "C": -2.421
+   },
+   "propyl acetate":{
+      "FP": 284.55,
+      "model": "Antoine",
+      "A": 4.14386,
+      "B": 1283.861,
+      "C": -64.378
+   },
+   "butanol":{
+      "FP": 314,
+      "model": "Antoine",
+      "A": 6.55,
+      "B": 1351.56,
+      "C": -93.34
+   }
+}

@@ -1,0 +1,367 @@
+substance_1,substance_2,x_1,x_2,MM,lnPvap,Method,FP
+ethyl laurate,,1,0,228.37,-1.45,0,402.3
+ethanol,octane,0.005,0.995,113.86,7.575678,1,286.15
+ethanol,octane,0.01,0.99,113.49,7.593094,1,283.45
+ethanol,octane,0.02,0.98,112.75,7.627042,1,281.95
+ethanol,octane,0.03,0.97,112,7.659875,1,280.75
+ethanol,octane,0.04,0.96,111.26,7.691664,1,279.65
+ethanol,octane,0.05,0.95,110.52,7.722474,1,279.05
+propyl acetate,octane,0.05,0.95,113.62,7.50802,1,285.55
+propyl acetate,ethanol,0.05,0.95,43.17,9.027906,1,283.55
+methyl octanoate,methyl decanoate,0.1,0.9,183.49,2.44,0,370.6
+methyl octanoate,methyl laurate,0.1,0.9,208.73,1.87,0,384.6
+methyl octanoate,methyl myristate,0.1,0.9,233.98,1.79,0,393.5
+methyl octanoate,methyl palmitate,0.1,0.9,259.23,1.78,0,396.9
+methyl octanoate,methyl stearate,0.1,0.9,284.48,1.78,0,401.3
+methyl octanoate,methyl oleate,0.1,0.9,282.66,1.78,0,400.4
+methyl decanoate,methyl laurate,0.1,0.9,211.54,0.19,0,393.7
+methyl decanoate,methyl myristate,0.1,0.9,236.79,-0.38,0,407.9
+methyl decanoate,methyl palmitate,0.1,0.9,262.03,-0.46,0,418
+methyl decanoate,methyl stearate,0.1,0.9,287.28,-0.47,0,426.9
+methyl decanoate,methyl oleate,0.1,0.9,285.47,-0.47,0,418.2
+methyl laurate,methyl myristate,0.1,0.9,239.59,-2.08,0,415.9
+methyl laurate,methyl palmitate,0.1,0.9,264.84,-2.65,0,431.7
+methyl laurate,methyl stearate,0.1,0.9,290.09,-2.73,0,438.4
+methyl laurate,methyl oleate,0.1,0.9,288.27,-2.72,0,434.2
+methyl myristate,methyl palmitate,0.1,0.9,267.65,-4.36,0,437.3
+methyl myristate,methyl stearate,0.1,0.9,292.89,-4.92,0,447.4
+methyl myristate,methyl oleate,0.1,0.9,291.08,-4.89,0,442.5
+methyl palmitate,methyl stearate,0.1,0.9,295.7,-6.66,0,454.4
+ethyl octanoate,ethyl laurate,0.1,0.9,222.76,0.87,0,390.4
+ethyl octanoate,ethyl myristate,0.1,0.9,248.01,0.78,0,399
+ethyl octanoate,ethyl palmitate,0.1,0.9,273.26,0.77,0,401
+ethyl octanoate,ethyl stearate,0.1,0.9,298.5,0.77,0,407.6
+ethyl octanoate,ethyl oleate,0.1,0.9,296.69,0.77,0,406.1
+ethyl octanoate,ethyl linoleate,0.1,0.9,294.88,0.77,0,406.1
+ethyl decanoate,ethyl myristate,0.1,0.9,250.81,-1.39,0,412.8
+ethyl decanoate,ethyl palmitate,0.1,0.9,276.06,-1.47,0,419.5
+ethyl decanoate,ethyl stearate,0.1,0.9,301.31,-1.48,0,430.6
+ethyl decanoate,ethyl oleate,0.1,0.9,299.49,-1.48,0,426.9
+ethyl decanoate,ethyl linoleate,0.1,0.9,297.68,-1.48,0,426
+ethyl laurate,ethyl myristate,0.1,0.9,253.62,-3.1,0,420.8
+ethyl laurate,ethyl palmitate,0.1,0.9,278.87,-3.66,0,433.9
+ethyl laurate,ethyl stearate,0.1,0.9,304.11,-3.74,0,439.3
+ethyl laurate,ethyl oleate,0.1,0.9,302.3,-3.74,0,440.1
+ethyl laurate,ethyl linoleate,0.1,0.9,300.49,-3.73,0,441.8
+ethyl myristate,ethyl palmitate,0.1,0.9,281.67,-5.39,0,439.9
+ethyl myristate,ethyl stearate,0.1,0.9,301.31,-5.3,0,447.4
+ethyl myristate,ethyl oleate,0.1,0.9,305.11,-5.91,0,448.1
+ethyl myristate,ethyl linoleate,0.1,0.9,303.29,-5.86,0,448.5
+ethanol,octane,0.1,0.9,106.81,7.863713,1,278.35
+methyl butyrate,octane,0.1,0.9,113.02,7.456348,1,284.75
+methyl butyrate,ethanol,0.1,0.9,46.27,8.974363,1,282.85
+propyl acetate,octane,0.1,0.9,113.02,7.455462,1,284.65
+propyl acetate,ethanol,0.1,0.9,46.27,8.974169,1,282.95
+butanol,ethyl octanoate,0.1,0.9,162.45,4.79,0,337.18
+butanol,ethyl decanoate,0.1,0.9,187.7,4.64,0,343.32
+butanol,ethyl laurate,0.1,0.9,212.95,4.62,0,341.84
+butanol,ethyl myristate,0.1,0.9,238.19,4.62,0,346.88
+ethanol,dodecane,0.18,0.82,146.89,7.37,0,293.4
+methyl octanoate,methyl decanoate,0.2,0.8,180.68,2.82,0,365.6
+methyl octanoate,methyl laurate,0.2,0.8,203.12,2.51,0,376.3
+methyl octanoate,methyl myristate,0.2,0.8,225.57,2.47,0,380.1
+methyl octanoate,methyl palmitate,0.2,0.8,248.01,2.47,0,382.6
+methyl octanoate,methyl stearate,0.2,0.8,270.45,2.47,0,385.5
+methyl octanoate,methyl oleate,0.2,0.8,268.84,2.47,0,383.1
+methyl decanoate,methyl laurate,0.2,0.8,208.73,0.57,0,390.7
+methyl decanoate,methyl myristate,0.2,0.8,231.18,0.26,0,400.3
+methyl decanoate,methyl palmitate,0.2,0.8,253.62,0.22,0,405
+methyl decanoate,methyl stearate,0.2,0.8,276.06,0.22,0,408.6
+methyl decanoate,methyl oleate,0.2,0.8,274.45,0.22,0,407.8
+methyl laurate,methyl myristate,0.2,0.8,236.79,-1.7,0,412.3
+methyl laurate,methyl palmitate,0.2,0.8,259.23,-2,0,422.9
+methyl laurate,methyl stearate,0.2,0.8,281.67,-2.04,0,427.3
+methyl laurate,methyl oleate,0.2,0.8,280.06,-2.04,0,425.2
+methyl myristate,methyl palmitate,0.2,0.8,264.84,-3.98,0,434.9
+methyl myristate,methyl stearate,0.2,0.8,287.28,-4.28,0,442.4
+methyl myristate,methyl oleate,0.2,0.8,285.67,-4.26,0,436.8
+methyl palmitate,methyl stearate,0.2,0.8,292.89,-6.27,0,449.9
+ethyl octanoate,ethyl laurate,0.2,0.8,217.15,1.51,0,381.5
+ethyl octanoate,ethyl myristate,0.2,0.8,239.59,1.47,0,386.3
+ethyl octanoate,ethyl palmitate,0.2,0.8,262.03,1.47,0,385
+ethyl octanoate,ethyl stearate,0.2,0.8,284.48,1.47,0,390
+ethyl octanoate,ethyl oleate,0.2,0.8,282.86,1.47,0,388.8
+ethyl octanoate,ethyl linoleate,0.2,0.8,281.25,1.47,0,388.8
+ethyl decanoate,ethyl myristate,0.2,0.8,245.2,-0.75,0,403.9
+ethyl decanoate,ethyl palmitate,0.2,0.8,267.65,-0.79,0,411.7
+ethyl decanoate,ethyl stearate,0.2,0.8,290.09,-0.79,0,414.3
+ethyl decanoate,ethyl oleate,0.2,0.8,288.48,-0.79,0,413.9
+ethyl decanoate,ethyl linoleate,0.2,0.8,286.86,-0.79,0,414
+ethyl laurate,ethyl myristate,0.2,0.8,250.81,-2.72,0,417.8
+ethyl laurate,ethyl palmitate,0.2,0.8,273.26,-3.02,0,427.9
+ethyl laurate,ethyl stearate,0.2,0.8,295.7,-3.06,0,432.1
+ethyl laurate,ethyl oleate,0.2,0.8,294.09,-3.05,0,430.8
+ethyl laurate,ethyl linoleate,0.2,0.8,292.47,-3.05,0,432.1
+ethyl myristate,ethyl palmitate,0.2,0.8,278.87,-5,0,437.9
+ethyl myristate,ethyl stearate,0.2,0.8,295.7,-4.91,0,443.8
+ethyl myristate,ethyl oleate,0.2,0.8,299.7,-5.28,0,443.4
+ethyl myristate,ethyl linoleate,0.2,0.8,298.08,-5.26,0,444.5
+ethanol,ethyl octanoate,0.2,0.8,145.83,7.48,0,307.4
+dodecane,ethyl octanoate,0.2,0.8,171.88,3.04,0,353.5
+ethanol,ethyl decanoate,0.2,0.8,166.67,7.52,0,310
+dodecane,ethyl decanoate,0.2,0.8,194.32,1.69,0,369.6
+ethanol,ethyl laurate,0.2,0.8,190.71,7.47,0,300.7
+dodecane,ethyl laurate,0.2,0.8,216.76,1.34,0,378.5
+ethanol,ethyl myristate,0.2,0.8,213.15,7.47,0,303.7
+dodecane,ethyl myristate,0.2,0.8,239.21,1.29,0,384.1
+ethanol,ethyl palmitate,0.2,0.8,235.6,7.47,0,320.5
+dodecane,ethyl palmitate,0.2,0.8,239.21,1.29,0,384.1
+ethanol,ethyl stearate,0.2,0.8,258.04,7.47,0,310.8
+dodecane,ethyl stearate,0.2,0.8,284.09,1.28,0,387.1
+ethanol,ethyl oleate,0.2,0.8,251.02,7.56,0,302.7
+dodecane,ethyl oleate,0.2,0.8,281.08,1.33,0,376.4
+ethanol,ethyl linoleate,0.2,0.8,254.81,7.47,0,321.4
+dodecane,ethyl linoleate,0.2,0.8,279.48,1.33,0,386.5
+ethanol,octane,0.2,0.8,99.4,8.097548,1,278.35
+methyl butyrate,octane,0.2,0.8,111.81,7.34324,1,283.35
+methyl butyrate,ethanol,0.2,0.8,52.48,8.857606,1,280.95
+propyl acetate,octane,0.2,0.8,111.81,7.341254,1,283.15
+propyl acetate,ethanol,0.2,0.8,52.48,8.85717,1,280.95
+butanol,ethyl octanoate,0.2,0.8,152.64,5.39,0,329.23
+butanol,ethyl decanoate,0.2,0.8,175.08,5.32,0,330.33
+butanol,ethyl laurate,0.2,0.8,197.52,5.31,0,330.08
+butanol,ethyl myristate,0.2,0.8,219.96,5.31,0,331.47
+butanol,ethyl palmitate,0.2,0.8,242.41,5.31,0,336
+ethanol,octane,0.3,0.7,91.98,8.286935,1,278.15
+methyl butyrate,octane,0.3,0.7,110.6,7.215687,1,282.55
+methyl butyrate,ethanol,0.3,0.7,58.69,8.725393,1,280.25
+propyl acetate,octane,0.3,0.7,110.6,7.212301,1,282.55
+propyl acetate,ethanol,0.3,0.7,58.69,8.724646,1,280.25
+ethanol,dodecane,0.37,0.63,122.14,8.09,0,290.4
+methyl octanoate,methyl decanoate,0.4,0.6,175.07,3.31,0,360.6
+methyl octanoate,methyl laurate,0.4,0.6,191.9,3.18,0,364.6
+methyl octanoate,methyl myristate,0.4,0.6,208.73,3.16,0,366.7
+methyl octanoate,methyl palmitate,0.4,0.6,225.57,3.16,0,366.9
+methyl octanoate,methyl stearate,0.4,0.6,242.4,3.16,0,367.5
+methyl octanoate,methyl oleate,0.4,0.6,241.19,3.16,0,367.8
+methyl decanoate,methyl laurate,0.4,0.6,203.12,1.06,0,385.4
+methyl decanoate,methyl myristate,0.4,0.6,219.95,0.93,0,389.9
+methyl decanoate,methyl palmitate,0.4,0.6,236.79,0.91,0,391.4
+methyl decanoate,methyl stearate,0.4,0.6,253.62,0.91,0,393.7
+methyl decanoate,methyl oleate,0.4,0.6,252.41,0.91,0,392.8
+methyl laurate,methyl myristate,0.4,0.6,231.18,-1.21,0,407.6
+methyl laurate,methyl palmitate,0.4,0.6,248.01,-1.34,0,413.9
+methyl laurate,methyl stearate,0.4,0.6,264.84,-1.35,0,415.5
+methyl laurate,methyl oleate,0.4,0.6,263.63,-1.35,0,415.2
+methyl myristate,methyl palmitate,0.4,0.6,259.23,-3.48,0,429.6
+methyl myristate,methyl stearate,0.4,0.6,276.06,-3.61,0,435
+methyl myristate,methyl oleate,0.4,0.6,274.85,-3.6,0,432.8
+methyl palmitate,methyl stearate,0.4,0.6,287.28,-5.77,0,448.3
+ethyl octanoate,ethyl laurate,0.4,0.6,205.93,2.17,0,371
+ethyl octanoate,ethyl myristate,0.4,0.6,222.76,2.16,0,372.6
+ethyl octanoate,ethyl palmitate,0.4,0.6,239.59,2.16,0,373.3
+ethyl octanoate,ethyl stearate,0.4,0.6,256.42,2.16,0,374
+ethyl octanoate,ethyl oleate,0.4,0.6,255.21,2.16,0,374.1
+ethyl octanoate,ethyl linoleate,0.4,0.6,254.01,2.16,0,374.1
+ethyl decanoate,ethyl myristate,0.4,0.6,233.98,-0.08,0,395.8
+ethyl decanoate,ethyl palmitate,0.4,0.6,250.81,-0.1,0,397.7
+ethyl decanoate,ethyl stearate,0.4,0.6,267.65,-0.1,0,397.3
+ethyl decanoate,ethyl oleate,0.4,0.6,266.44,-0.1,0,398.5
+ethyl decanoate,ethyl linoleate,0.4,0.6,265.23,-0.1,0,399.1
+ethyl laurate,ethyl myristate,0.4,0.6,245.2,-2.22,0,412.8
+ethyl laurate,ethyl palmitate,0.4,0.6,262.03,-2.35,0,418.5
+ethyl laurate,ethyl stearate,0.4,0.6,278.87,-2.37,0,420.4
+ethyl laurate,ethyl oleate,0.4,0.6,277.66,-2.36,0,419.9
+ethyl laurate,ethyl linoleate,0.4,0.6,276.45,-2.36,0,420.4
+ethyl myristate,ethyl palmitate,0.4,0.6,273.26,-4.51,0,433.2
+ethyl myristate,ethyl stearate,0.4,0.6,290.09,-4.63,0,438.8
+ethyl myristate,ethyl oleate,0.4,0.6,288.88,-4.63,0,437.4
+ethyl myristate,ethyl linoleate,0.4,0.6,287.67,-4.62,0,437.9
+ethanol,ethyl octanoate,0.4,0.6,119.39,8.17,0,298.7
+dodecane,ethyl octanoate,0.4,0.6,171.49,3.01,0,353.5
+ethanol,ethyl decanoate,0.4,0.6,136.22,8.16,0,298.4
+dodecane,ethyl decanoate,0.4,0.6,188.32,2.15,0,365.2
+ethanol,ethyl laurate,0.4,0.6,153.05,8.16,0,295.4
+dodecane,ethyl laurate,0.4,0.6,205.16,2,0,366.8
+ethanol,ethyl myristate,0.4,0.6,169.88,8.16,0,295.4
+dodecane,ethyl myristate,0.4,0.6,221.99,1.98,0,369.8
+ethanol,ethyl palmitate,0.4,0.6,184.27,8.19,0,296.5
+dodecane,ethyl palmitate,0.4,0.6,221.99,1.98,0,369.8
+ethanol,ethyl stearate,0.4,0.6,203.55,8.16,0,297.4
+dodecane,ethyl stearate,0.4,0.6,255.65,1.98,0,372.1
+ethanol,ethyl oleate,0.4,0.6,202.34,8.16,0,293
+dodecane,ethyl oleate,0.4,0.6,254.44,1.98,0,367.8
+ethanol,ethyl linoleate,0.4,0.6,201.13,8.16,0,295.4
+dodecane,ethyl linoleate,0.4,0.6,228.36,2.35,0,367.1
+ethanol,octane,0.4,0.6,84.56,8.446102,1,277.95
+methyl butyrate,octane,0.4,0.6,109.39,7.069453,1,282.25
+methyl butyrate,ethanol,0.4,0.6,64.89,8.572997,1,280.05
+propyl acetate,octane,0.4,0.6,109.39,7.064222,1,282.25
+propyl acetate,ethanol,0.4,0.6,64.89,8.571836,1,280.05
+butanol,ethyl octanoate,0.4,0.6,133.01,6.04,0,322.59
+butanol,ethyl decanoate,0.4,0.6,149.84,6.01,0,322.33
+butanol,ethyl laurate,0.4,0.6,166.67,6.01,0,321.36
+butanol,ethyl myristate,0.4,0.6,183.5,6.01,0,322.38
+butanol,ethyl palmitate,0.4,0.6,200.33,6.01,0,322.64
+ethanol,octane,0.5,0.5,77.15,8.583379,1,277.85
+methyl butyrate,octane,0.5,0.5,108.18,6.89811,1,281.95
+methyl butyrate,ethanol,0.5,0.5,71.1,8.393127,1,279.85
+propyl acetate,octane,0.5,0.5,108.18,6.890339,1,281.95
+propyl acetate,ethanol,0.5,0.5,71.1,8.39139,1,279.85
+ethanol,dodecane,0.57,0.43,96.08,8.52,0,289.4
+methyl octanoate,methyl decanoate,0.6,0.4,169.46,3.64,0,354.6
+methyl octanoate,methyl laurate,0.6,0.4,180.68,3.57,0,357.6
+methyl octanoate,methyl myristate,0.6,0.4,191.9,3.57,0,357.7
+methyl octanoate,methyl palmitate,0.6,0.4,203.12,3.57,0,358.3
+methyl octanoate,methyl stearate,0.6,0.4,214.34,3.57,0,357.3
+methyl octanoate,methyl oleate,0.6,0.4,213.54,3.57,0,358.5
+methyl decanoate,methyl laurate,0.6,0.4,197.51,1.38,0,380.7
+methyl decanoate,methyl myristate,0.6,0.4,208.73,1.32,0,383.6
+methyl decanoate,methyl palmitate,0.6,0.4,219.96,1.32,0,384
+methyl decanoate,methyl stearate,0.6,0.4,231.18,1.32,0,384.1
+methyl decanoate,methyl oleate,0.6,0.4,230.37,1.32,0,385.4
+methyl laurate,methyl myristate,0.6,0.4,225.57,-0.88,0,403.3
+methyl laurate,methyl palmitate,0.6,0.4,236.79,-0.94,0,406.6
+methyl laurate,methyl stearate,0.6,0.4,248.01,-0.94,0,407.1
+methyl laurate,methyl oleate,0.6,0.4,247.2,-0.94,0,406.9
+methyl myristate,methyl palmitate,0.6,0.4,253.62,-3.16,0,425.9
+methyl myristate,methyl stearate,0.6,0.4,264.84,-3.21,0,429.4
+methyl myristate,methyl oleate,0.6,0.4,264.03,-3.21,0,426.2
+methyl palmitate,methyl stearate,0.6,0.4,281.67,-5.44,0,446.3
+ethyl octanoate,ethyl laurate,0.6,0.4,194.71,2.57,0,364
+ethyl octanoate,ethyl myristate,0.6,0.4,205.93,2.56,0,365
+ethyl octanoate,ethyl palmitate,0.6,0.4,217.15,2.56,0,365.6
+ethyl octanoate,ethyl stearate,0.6,0.4,228.37,2.56,0,366
+ethyl octanoate,ethyl oleate,0.6,0.4,227.56,2.56,0,364.8
+ethyl octanoate,ethyl linoleate,0.6,0.4,226.76,2.56,0,364.8
+ethyl decanoate,ethyl myristate,0.6,0.4,222.76,0.31,0,388.7
+ethyl decanoate,ethyl palmitate,0.6,0.4,233.98,0.31,0,390.7
+ethyl decanoate,ethyl stearate,0.6,0.4,245.2,0.31,0,391.1
+ethyl decanoate,ethyl oleate,0.6,0.4,244.4,0.31,0,390.2
+ethyl decanoate,ethyl linoleate,0.6,0.4,243.59,0.31,0,390.8
+ethyl laurate,ethyl myristate,0.6,0.4,239.59,-1.9,0,409.1
+ethyl laurate,ethyl palmitate,0.6,0.4,250.81,-1.95,0,412.9
+ethyl laurate,ethyl stearate,0.6,0.4,262.03,-1.96,0,413.8
+ethyl laurate,ethyl oleate,0.6,0.4,261.23,-1.96,0,412.5
+ethyl laurate,ethyl linoleate,0.6,0.4,260.42,-1.96,0,412.7
+ethyl myristate,ethyl palmitate,0.6,0.4,267.65,-4.18,0,429.9
+ethyl myristate,ethyl stearate,0.6,0.4,278.87,-4.24,0,430.9
+ethyl myristate,ethyl oleate,0.6,0.4,278.06,-4.23,0,430.8
+ethyl myristate,ethyl linoleate,0.6,0.4,277.25,-4.23,0,431.8
+ethanol,ethyl octanoate,0.6,0.4,92.95,8.57,0,295.7
+dodecane,ethyl octanoate,0.6,0.4,171.11,2.97,0,352.1
+ethanol,ethyl decanoate,0.6,0.4,104.17,8.57,0,294.7
+dodecane,ethyl decanoate,0.6,0.4,182.33,2.46,0,360.4
+ethanol,ethyl laurate,0.6,0.4,115.39,8.57,0,292.4
+dodecane,ethyl laurate,0.6,0.4,193.55,2.39,0,362.1
+ethanol,ethyl myristate,0.6,0.4,126.61,8.57,0,292.4
+dodecane,ethyl myristate,0.6,0.4,204.77,2.38,0,363.5
+ethanol,ethyl palmitate,0.6,0.4,137.83,8.57,0,294.5
+dodecane,ethyl palmitate,0.6,0.4,204.77,2.38,0,363.5
+ethanol,ethyl stearate,0.6,0.4,149.05,8.57,0,296.7
+dodecane,ethyl stearate,0.6,0.4,227.21,2.38,0,362.8
+ethanol,ethyl oleate,0.6,0.4,148.25,8.57,0,292.3
+dodecane,ethyl oleate,0.6,0.4,226.41,2.38,0,358.4
+ethanol,ethyl linoleate,0.6,0.4,144.76,8.58,0,292.4
+dodecane,ethyl linoleate,0.6,0.4,225.6,2.38,0,363.1
+ethanol,octane,0.6,0.4,69.73,8.704065,1,277.95
+methyl butyrate,octane,0.6,0.4,106.97,6.691212,1,281.85
+methyl butyrate,ethanol,0.6,0.4,77.31,8.173649,1,279.85
+propyl acetate,octane,0.6,0.4,106.97,6.679722,1,281.85
+propyl acetate,ethanol,0.6,0.4,77.306,8.171052,1,279.85
+butanol,ethyl octanoate,0.6,0.4,113.38,6.43,0,318.23
+butanol,ethyl decanoate,0.6,0.4,124.6,6.41,0,319.67
+butanol,ethyl laurate,0.6,0.4,135.82,6.41,0,318.62
+butanol,ethyl myristate,0.6,0.4,147.04,6.41,0,319
+butanol,ethyl palmitate,0.6,0.4,158.26,6.41,0,319.28
+ethanol,octane,0.7,0.3,62.32,8.811743,1,277.95
+methyl butyrate,octane,0.7,0.3,105.76,6.430032,1,281.85
+methyl butyrate,ethanol,0.7,0.3,83.51,7.892047,1,280.15
+propyl acetate,octane,0.7,0.3,105.76,6.412575,1,281.85
+propyl acetate,ethanol,0.7,0.3,83.512,7.888028,1,280.15
+ethanol,dodecane,0.78,0.22,68.73,8.83,0,289.4
+methyl octanoate,methyl decanoate,0.8,0.2,163.85,3.88,0,351.3
+methyl octanoate,methyl laurate,0.8,0.2,169.46,3.86,0,351.9
+methyl octanoate,methyl myristate,0.8,0.2,175.07,3.86,0,352.7
+methyl octanoate,methyl palmitate,0.8,0.2,180.68,3.86,0,352.6
+methyl octanoate,methyl stearate,0.8,0.2,186.29,3.86,0,352
+methyl octanoate,methyl oleate,0.8,0.2,185.89,3.86,0,353.5
+methyl decanoate,methyl laurate,0.8,0.2,191.9,1.63,0,377.4
+methyl decanoate,methyl myristate,0.8,0.2,197.51,1.61,0,377.6
+methyl decanoate,methyl palmitate,0.8,0.2,203.12,1.61,0,379.3
+methyl decanoate,methyl stearate,0.8,0.2,208.73,1.6,0,378.1
+methyl decanoate,methyl oleate,0.8,0.2,208.33,1.6,0,379.1
+methyl laurate,methyl myristate,0.8,0.2,219.95,-0.63,0,400.6
+methyl laurate,methyl palmitate,0.8,0.2,225.57,-0.66,0,402.3
+methyl laurate,methyl stearate,0.8,0.2,231.18,-0.66,0,402.8
+methyl laurate,methyl oleate,0.8,0.2,230.77,-0.66,0,401.9
+methyl myristate,methyl palmitate,0.8,0.2,248.01,-2.91,0,422.3
+methyl myristate,methyl stearate,0.8,0.2,253.62,-2.93,0,423.4
+methyl myristate,methyl oleate,0.8,0.2,253.22,-2.93,0,423.2
+methyl palmitate,methyl stearate,0.8,0.2,276.06,-5.2,0,443.3
+ethyl octanoate,ethyl laurate,0.8,0.2,183.49,2.85,0,359
+ethyl octanoate,ethyl myristate,0.8,0.2,189.1,2.85,0,359.3
+ethyl octanoate,ethyl palmitate,0.8,0.2,194.71,2.85,0,359
+ethyl octanoate,ethyl stearate,0.8,0.2,200.32,2.85,0,360
+ethyl octanoate,ethyl oleate,0.8,0.2,199.91,2.85,0,359.8
+ethyl octanoate,ethyl linoleate,0.8,0.2,199.51,2.85,0,359.8
+ethyl decanoate,ethyl myristate,0.8,0.2,211.54,0.6,0,384.9
+ethyl decanoate,ethyl palmitate,0.8,0.2,217.15,0.6,0,385.8
+ethyl decanoate,ethyl stearate,0.8,0.2,222.76,0.6,0,385
+ethyl decanoate,ethyl oleate,0.8,0.2,222.36,0.6,0,384.8
+ethyl decanoate,ethyl linoleate,0.8,0.2,221.95,0.6,0,384.4
+ethyl laurate,ethyl myristate,0.8,0.2,233.98,-1.65,0,405.9
+ethyl laurate,ethyl palmitate,0.8,0.2,239.59,-1.67,0,407.9
+ethyl laurate,ethyl stearate,0.8,0.2,245.2,-1.67,0,408.3
+ethyl laurate,ethyl oleate,0.8,0.2,244.8,-1.67,0,407.2
+ethyl laurate,ethyl linoleate,0.8,0.2,244.4,-1.67,0,407.7
+ethyl myristate,ethyl palmitate,0.8,0.2,262.03,-3.93,0,426.5
+ethyl myristate,ethyl stearate,0.8,0.2,267.65,-3.95,0,427.5
+ethyl myristate,ethyl oleate,0.8,0.2,267.24,-3.95,0,426.1
+ethyl myristate,ethyl linoleate,0.8,0.2,266.84,-3.95,0,427.8
+ethanol,ethyl octanoate,0.8,0.2,66.51,8.86,0,292.8
+dodecane,ethyl octanoate,0.8,0.2,170.72,2.93,0,353.5
+ethanol,ethyl decanoate,0.8,0.2,72.12,8.86,0,292.7
+dodecane,ethyl decanoate,0.8,0.2,176.33,2.7,0,356.8
+ethanol,ethyl laurate,0.8,0.2,77.73,8.86,0,292.7
+dodecane,ethyl laurate,0.8,0.2,181.94,2.67,0,357.5
+ethanol,ethyl myristate,0.8,0.2,83.34,8.86,0,292.4
+dodecane,ethyl myristate,0.8,0.2,187.55,2.67,0,357.5
+ethanol,ethyl palmitate,0.8,0.2,88.95,8.86,0,292.4
+dodecane,ethyl palmitate,0.8,0.2,187.55,2.67,0,357.5
+ethanol,ethyl stearate,0.8,0.2,94.56,8.86,0,293.4
+dodecane,ethyl stearate,0.8,0.2,198.77,2.67,0,357.5
+ethanol,ethyl oleate,0.8,0.2,94.16,8.86,0,292
+dodecane,ethyl oleate,0.8,0.2,198.37,2.67,0,355.4
+ethanol,ethyl linoleate,0.8,0.2,93.75,8.86,0,292.4
+dodecane,ethyl linoleate,0.8,0.2,197.97,2.67,0,357.5
+ethanol,octane,0.8,0.2,54.9,8.908944,1,277.95
+methyl butyrate,octane,0.8,0.2,104.55,6.075553,1,282.25
+methyl butyrate,ethanol,0.8,0.2,89.72,7.498633,1,282.25
+propyl acetate,octane,0.8,0.2,104.55,6.046956,1,282.25
+propyl acetate,ethanol,0.8,0.2,89.718,7.491816,1,282.25
+butanol,ethyl octanoate,0.8,0.2,93.75,6.7,0,316.23
+butanol,ethyl decanoate,0.8,0.2,99.36,6.7,0,316.62
+butanol,ethyl laurate,0.8,0.2,104.97,6.7,0,314.95
+butanol,ethyl myristate,0.8,0.2,110.58,6.7,0,316.33
+butanol,ethyl palmitate,0.8,0.2,116.19,6.7,0,315.92
+ethanol,octane,0.9,0.1,47.48,8.997529,1,278.75
+methyl butyrate,octane,0.9,0.1,103.34,5.521407,1,282.65
+methyl butyrate,ethanol,0.9,0.1,95.92,6.84079,1,282.15
+propyl acetate,octane,0.9,0.1,103.34,5.464624,1,282.65
+propyl acetate,ethanol,0.9,0.1,95.925,6.825925,1,282.15
+ethanol,octane,0.95,0.05,43.78,9.039043,1,280.65
+ethanol,octane,0.97,0.03,42.29,9.055178,1,282.25
+ethanol,octane,0.98,0.02,41.55,9.063148,1,282.65
+ethanol,octane,0.99,0.01,40.81,9.071056,1,284.85
+methyl decanoate,,1,0,186.29,1.83,0,374.7
+methyl octanoate,,1,0,158.24,4.08,0,348.6
+methyl laurate,,1,0,214.34,-0.43,0,398.4
+methyl myristate,,1,0,242.4,-2.71,0,419.7
+methyl palmitate,,1,0,270.45,-5,0,440.3
+methyl stearate,,1,0,298.5,-7.3,0,455.5
+methyl oleate,,1,0,296.49,-6.92,0,445.8
+ethyl octanoate,,1,0,172.26,3.07,0,354
+ethyl myristate,,1,0,256.42,-3.73,0,423.6
+ethyl palmitate,,1,0,284.48,-6.03,0,443.2
+ethyl stearate,,1,0,312.53,-8.33,0,458.3
+ethyl oleate,,1,0,310.51,-7.96,0,453.1
+ethyl linoleate,,1,0,308.5,-7.58,0,453.1
+ethyl decanoate,,1,0,200.32,0.82,0,379.5
+ethanol,,1,0,40.07,9.08,0,288.5
+dodecane,,1,0,170.33,2.89,0,354.4
+octane,,1,0,114.23,7.557953,1,287.65
+ethanol,,1,0,40.07,9.078902,1,286.15
+methyl butyrate,,1,0,102.13,4.172583,1,284.55
+propyl acetate,,1,0,102.13,3.902982,1,284.55
+butanol,,1,0,74.12,6.92,0,314
