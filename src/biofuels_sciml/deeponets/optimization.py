@@ -42,6 +42,17 @@ def _suggest_model_params(
     }
 
 
+def _suggest_loss_weight(
+    trial: Trial, pure_component_loss_weight_range: tuple[float, float]
+) -> float:
+    """Suggest the pure-component loss weight."""
+    return trial.suggest_float(
+        "pure_component_loss_weight",
+        pure_component_loss_weight_range[0],
+        pure_component_loss_weight_range[1],
+    )
+
+
 def _prune_if_too_many_parameters(
     trial: Trial,
     model: torch.nn.Module,
@@ -73,11 +84,16 @@ def objective_fnn(
     hidden_width_range: tuple[int, int] = (2, 32),
     n_layers_range: tuple[int, int] = (2, 5),
     activation_choices: Sequence[str] = DEFAULT_ACTIVATION_CHOICES,
+    pure_component_loss_weight_range: tuple[float, float] = (0.01, 100),
+    pure_component_atol: float = 1e-6,
 ) -> float:
     """Evaluate one Optuna trial for FNN learning rate and architecture."""
     lr = trial.suggest_float("lr", 1e-5, 1e-2, log=True)
     model_params = _suggest_model_params(
         trial, hidden_width_range, n_layers_range, activation_choices
+    )
+    pure_component_loss_weight = _suggest_loss_weight(
+        trial, pure_component_loss_weight_range
     )
     kf = KFold(n_splits=folds, shuffle=True, random_state=random_state)
     splits = list(kf.split(fnn_features))
@@ -94,8 +110,8 @@ def objective_fnn(
     for train_idx, val_idx in splits:
         fnn_scaler = StandardScaler()
 
-        fnn_train = fnn_scaler.fit_transform(fnn_features[train_idx])
-        fnn_val = fnn_scaler.transform(fnn_features[val_idx])
+        fnn_train = fit_transform_except_x1(fnn_scaler, fnn_features[train_idx])
+        fnn_val = transform_except_x1(fnn_scaler, fnn_features[val_idx])
 
         fnn_train_tensor = torch.tensor(fnn_train, dtype=torch.float32).to(device)
         fnn_val_tensor = torch.tensor(fnn_val, dtype=torch.float32).to(device)
@@ -109,7 +125,6 @@ def objective_fnn(
             .unsqueeze(1)
             .to(device)
         )
-
         model = FNN(
             input_dim=fnn_train_tensor.shape[1],
             output_dim=1,
@@ -125,6 +140,8 @@ def objective_fnn(
             epochs=epochs,
             patience=patience,
             min_delta=min_delta,
+            pure_component_loss_weight=pure_component_loss_weight,
+            pure_component_atol=pure_component_atol,
         )
 
         metrics = compute_metrics(val_predictions, y_val_tensor)
@@ -147,11 +164,16 @@ def objective_deeponet(
     hidden_width_range: tuple[int, int] = (2, 32),
     n_layers_range: tuple[int, int] = (2, 5),
     activation_choices: Sequence[str] = DEFAULT_ACTIVATION_CHOICES,
+    pure_component_loss_weight_range: tuple[float, float] = (0.01, 100),
+    pure_component_atol: float = 1e-6,
 ) -> float:
     """Evaluate one Optuna trial for DeepONet learning rate and architecture."""
     lr = trial.suggest_float("lr", 1e-5, 1e-2, log=True)
     model_params = _suggest_model_params(
         trial, hidden_width_range, n_layers_range, activation_choices
+    )
+    pure_component_loss_weight = _suggest_loss_weight(
+        trial, pure_component_loss_weight_range
     )
     kf = KFold(n_splits=folds, shuffle=True, random_state=random_state)
     splits = list(kf.split(branch_features))
@@ -210,6 +232,8 @@ def objective_deeponet(
             epochs=epochs,
             patience=patience,
             min_delta=min_delta,
+            pure_component_loss_weight=pure_component_loss_weight,
+            pure_component_atol=pure_component_atol,
         )
 
         metrics = compute_metrics(val_predictions, y_val_tensor)

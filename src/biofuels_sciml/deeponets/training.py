@@ -76,6 +76,35 @@ def compute_metrics(
     }
 
 
+def pure_component_weighted_mse_loss(
+    predictions: torch.Tensor,
+    targets: torch.Tensor,
+    x1_values: torch.Tensor,
+    pure_component_loss_weight: float = 1.0,
+    pure_component_atol: float = 1e-6,
+) -> torch.Tensor:
+    """Compute MSE plus an extra MSE term for pure-component points."""
+    base_loss = nn.functional.mse_loss(predictions, targets)
+
+    flattened_x1 = x1_values.reshape(-1)
+    pure_component_mask = torch.isclose(
+        flattened_x1,
+        torch.zeros_like(flattened_x1),
+        atol=pure_component_atol,
+    ) | torch.isclose(
+        flattened_x1,
+        torch.ones_like(flattened_x1),
+        atol=pure_component_atol,
+    )
+    if not pure_component_mask.any():
+        return base_loss
+
+    squared_errors = (predictions.reshape(-1) - targets.reshape(-1)) ** 2
+    pure_component_loss = squared_errors[pure_component_mask].mean()
+
+    return base_loss + pure_component_loss_weight * pure_component_loss
+
+
 def plot_fold_results(
     model_name: str,
     fold_idx: int,
@@ -119,10 +148,15 @@ def train_fnn_fold(
     epochs: int = 10000,
     patience: int = 1000,
     min_delta: float = 1e-4,
+    pure_component_loss_weight: float = 1.0,
+    pure_component_atol: float = 1e-6,
 ) -> tuple[list[float], list[float], torch.Tensor]:
     """Train the FNN for one fold and return loss histories and predictions."""
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
-    loss_fn = nn.MSELoss()
+
+    x1_train = x_train[:, 0]
+    x1_val = x_val[:, 0]
+
     train_losses: list[float] = []
     val_losses: list[float] = []
     best_val_loss = float("inf")
@@ -132,7 +166,13 @@ def train_fnn_fold(
     for _ in range(epochs):
         model.train()
         train_predictions = model(x_train)
-        train_loss = loss_fn(train_predictions, y_train)
+        train_loss = pure_component_weighted_mse_loss(
+            train_predictions,
+            y_train,
+            x1_train,
+            pure_component_loss_weight=pure_component_loss_weight,
+            pure_component_atol=pure_component_atol,
+        )
 
         optimizer.zero_grad()
         train_loss.backward()
@@ -141,7 +181,13 @@ def train_fnn_fold(
         model.eval()
         with torch.no_grad():
             val_predictions = model(x_val)
-            val_loss = loss_fn(val_predictions, y_val)
+            val_loss = pure_component_weighted_mse_loss(
+                val_predictions,
+                y_val,
+                x1_val,
+                pure_component_loss_weight=pure_component_loss_weight,
+                pure_component_atol=pure_component_atol,
+            )
 
         train_losses.append(train_loss.detach().cpu().item())
         current_val_loss = val_loss.detach().cpu().item()
@@ -179,10 +225,15 @@ def train_deeponet_fold(
     epochs: int = 10000,
     patience: int = 1000,
     min_delta: float = 1e-4,
+    pure_component_loss_weight: float = 1.0,
+    pure_component_atol: float = 1e-6,
 ) -> tuple[list[float], list[float], torch.Tensor]:
     """Train the DeepONet for one fold and return loss histories and predictions."""
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
-    loss_fn = nn.MSELoss()
+
+    x1_train = trunk_train[:, 0]
+    x1_val = trunk_val[:, 0]
+
     train_losses: list[float] = []
     val_losses: list[float] = []
     best_val_loss = float("inf")
@@ -192,7 +243,13 @@ def train_deeponet_fold(
     for _ in range(epochs):
         model.train()
         train_predictions = model(branch_train, trunk_train)
-        train_loss = loss_fn(train_predictions, y_train)
+        train_loss = pure_component_weighted_mse_loss(
+            train_predictions,
+            y_train,
+            x1_train,
+            pure_component_loss_weight=pure_component_loss_weight,
+            pure_component_atol=pure_component_atol,
+        )
 
         optimizer.zero_grad()
         train_loss.backward()
@@ -201,7 +258,13 @@ def train_deeponet_fold(
         model.eval()
         with torch.no_grad():
             val_predictions = model(branch_val, trunk_val)
-            val_loss = loss_fn(val_predictions, y_val)
+            val_loss = pure_component_weighted_mse_loss(
+                val_predictions,
+                y_val,
+                x1_val,
+                pure_component_loss_weight=pure_component_loss_weight,
+                pure_component_atol=pure_component_atol,
+            )
 
         train_losses.append(train_loss.detach().cpu().item())
         current_val_loss = val_loss.detach().cpu().item()
