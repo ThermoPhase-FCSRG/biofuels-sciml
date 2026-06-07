@@ -13,6 +13,16 @@ ACTIVATION_FUNCTIONS: dict[str, type[nn.Module]] = {
 ActivationLike = str | type[nn.Module]
 
 
+def set_torch_seed(random_state: int | None) -> None:
+    """Seed PyTorch CPU and CUDA generators when a seed is provided."""
+    if random_state is None:
+        return
+
+    torch.manual_seed(random_state)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(random_state)
+
+
 def get_activation_function(activation: ActivationLike) -> type[nn.Module]:
     """Return an activation module class from a name or module class."""
     if isinstance(activation, str):
@@ -27,13 +37,6 @@ def get_activation_function(activation: ActivationLike) -> type[nn.Module]:
     return activation
 
 
-def count_trainable_parameters(model: nn.Module) -> int:
-    """Count trainable parameters in a PyTorch module."""
-    return sum(
-        parameter.numel() for parameter in model.parameters() if parameter.requires_grad
-    )
-
-
 class FNN(nn.Module):
     """Standard feedforward neural network."""
 
@@ -44,9 +47,11 @@ class FNN(nn.Module):
         hidden_width: int = 14,
         n_layers: int = 3,
         activation: ActivationLike = nn.ReLU,
+        random_state: int | None = 42,
     ) -> None:
         """Initialize the feedforward network layers."""
         super().__init__()
+        set_torch_seed(random_state)
         layers: list[nn.Module] = []
         current_dim = input_dim
         activation_function = get_activation_function(activation)
@@ -75,11 +80,27 @@ class DeepONet(nn.Module):
         hidden_width: int = 14,
         n_layers: int = 3,
         activation: ActivationLike = nn.ReLU,
+        random_state: int | None = 42,
     ) -> None:
         """Initialize branch, trunk, and bias parameters."""
         super().__init__()
-        self.branch = FNN(branch_dim, output_dim, hidden_width, n_layers, activation)
-        self.trunk = FNN(trunk_dim, output_dim, hidden_width, n_layers, activation)
+        set_torch_seed(random_state)
+        self.branch = FNN(
+            branch_dim,
+            output_dim,
+            hidden_width,
+            n_layers,
+            activation,
+            random_state=None,
+        )
+        self.trunk = FNN(
+            trunk_dim,
+            output_dim,
+            hidden_width,
+            n_layers,
+            activation,
+            random_state=None,
+        )
         self.bias = nn.Parameter(torch.zeros(output_dim))
 
     def forward(

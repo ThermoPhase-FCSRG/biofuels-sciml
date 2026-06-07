@@ -4,7 +4,6 @@ import numpy as np
 import torch
 
 from collections.abc import Sequence
-from optuna.exceptions import TrialPruned
 from optuna.trial import Trial
 from sklearn.model_selection import KFold
 from sklearn.preprocessing import StandardScaler
@@ -13,7 +12,6 @@ from biofuels_sciml.deeponets.models import (
     ACTIVATION_FUNCTIONS,
     DeepONet,
     FNN,
-    count_trainable_parameters,
 )
 from biofuels_sciml.deeponets.training import (
     compute_metrics,
@@ -42,35 +40,6 @@ def _suggest_model_params(
     }
 
 
-def _suggest_loss_weight(
-    trial: Trial, pure_component_loss_weight_range: tuple[float, float]
-) -> float:
-    """Suggest the pure-component loss weight."""
-    return trial.suggest_float(
-        "pure_component_loss_weight",
-        pure_component_loss_weight_range[0],
-        pure_component_loss_weight_range[1],
-    )
-
-
-def _prune_if_too_many_parameters(
-    trial: Trial,
-    model: torch.nn.Module,
-    min_train_samples: int,
-) -> None:
-    """Prune a trial when trainable parameters exceed available train samples."""
-    n_trainable_params = count_trainable_parameters(model)
-    trial.set_user_attr("n_trainable_params", n_trainable_params)
-    trial.set_user_attr("min_train_samples", min_train_samples)
-
-    if n_trainable_params > min_train_samples:
-        raise TrialPruned(
-            "Trial pruned because the model has "
-            f"{n_trainable_params} trainable parameters and only "
-            f"{min_train_samples} training samples in the smallest fold."
-        )
-
-
 def objective_fnn(
     trial: Trial,
     fnn_features: np.ndarray,
@@ -81,10 +50,9 @@ def objective_fnn(
     epochs: int = 10000,
     patience: int = 1000,
     min_delta: float = 1e-4,
-    hidden_width_range: tuple[int, int] = (2, 32),
+    hidden_width_range: tuple[int, int] = (4, 64),
     n_layers_range: tuple[int, int] = (2, 5),
     activation_choices: Sequence[str] = DEFAULT_ACTIVATION_CHOICES,
-    pure_component_loss_weight_range: tuple[float, float] = (0.01, 100),
     pure_component_atol: float = 1e-6,
 ) -> float:
     """Evaluate one Optuna trial for FNN learning rate and architecture."""
@@ -92,19 +60,12 @@ def objective_fnn(
     model_params = _suggest_model_params(
         trial, hidden_width_range, n_layers_range, activation_choices
     )
-    pure_component_loss_weight = _suggest_loss_weight(
-        trial, pure_component_loss_weight_range
+    pure_component_loss_weight = trial.suggest_float(
+        "pure_component_loss_weight", 1, 1e4, log=True
     )
+    l1_loss_weight = trial.suggest_float("l1_loss_weight", 1e-5, 1e-2, log=True)
     kf = KFold(n_splits=folds, shuffle=True, random_state=random_state)
     splits = list(kf.split(fnn_features))
-    min_train_samples = min(len(train_idx) for train_idx, _ in splits)
-    reference_model = FNN(
-        input_dim=fnn_features.shape[1],
-        output_dim=1,
-        **model_params,
-    )
-    _prune_if_too_many_parameters(trial, reference_model, min_train_samples)
-
     fold_rmses: list[float] = []
 
     for train_idx, val_idx in splits:
@@ -128,6 +89,7 @@ def objective_fnn(
         model = FNN(
             input_dim=fnn_train_tensor.shape[1],
             output_dim=1,
+            random_state=random_state,
             **model_params,
         ).to(device)
         _, _, val_predictions = train_fnn_fold(
@@ -142,6 +104,8 @@ def objective_fnn(
             min_delta=min_delta,
             pure_component_loss_weight=pure_component_loss_weight,
             pure_component_atol=pure_component_atol,
+            l1_loss_weight=l1_loss_weight,
+            random_state=random_state,
         )
 
         metrics = compute_metrics(val_predictions, y_val_tensor)
@@ -164,7 +128,6 @@ def objective_deeponet(
     hidden_width_range: tuple[int, int] = (2, 32),
     n_layers_range: tuple[int, int] = (2, 5),
     activation_choices: Sequence[str] = DEFAULT_ACTIVATION_CHOICES,
-    pure_component_loss_weight_range: tuple[float, float] = (0.01, 100),
     pure_component_atol: float = 1e-6,
 ) -> float:
     """Evaluate one Optuna trial for DeepONet learning rate and architecture."""
@@ -172,20 +135,12 @@ def objective_deeponet(
     model_params = _suggest_model_params(
         trial, hidden_width_range, n_layers_range, activation_choices
     )
-    pure_component_loss_weight = _suggest_loss_weight(
-        trial, pure_component_loss_weight_range
+    pure_component_loss_weight = trial.suggest_float(
+        "pure_component_loss_weight", 1, 1e4, log=True
     )
+    l1_loss_weight = trial.suggest_float("l1_loss_weight", 1e-5, 1e-2, log=True)
     kf = KFold(n_splits=folds, shuffle=True, random_state=random_state)
     splits = list(kf.split(branch_features))
-    min_train_samples = min(len(train_idx) for train_idx, _ in splits)
-    reference_model = DeepONet(
-        branch_dim=branch_features.shape[1],
-        trunk_dim=trunk_features.shape[1],
-        output_dim=1,
-        **model_params,
-    )
-    _prune_if_too_many_parameters(trial, reference_model, min_train_samples)
-
     fold_rmses: list[float] = []
 
     for train_idx, val_idx in splits:
@@ -218,6 +173,7 @@ def objective_deeponet(
             branch_dim=branch_train_tensor.shape[1],
             trunk_dim=trunk_train_tensor.shape[1],
             output_dim=1,
+            random_state=random_state,
             **model_params,
         ).to(device)
         _, _, val_predictions = train_deeponet_fold(
@@ -234,6 +190,8 @@ def objective_deeponet(
             min_delta=min_delta,
             pure_component_loss_weight=pure_component_loss_weight,
             pure_component_atol=pure_component_atol,
+            l1_loss_weight=l1_loss_weight,
+            random_state=random_state,
         )
 
         metrics = compute_metrics(val_predictions, y_val_tensor)

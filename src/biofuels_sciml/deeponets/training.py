@@ -14,7 +14,7 @@ from torchmetrics import (
     R2Score,
 )
 
-from biofuels_sciml.deeponets.models import DeepONet, FNN
+from biofuels_sciml.deeponets.models import DeepONet, FNN, set_torch_seed
 
 
 def _scaled_column_indices(features: np.ndarray, x1_column_index: int) -> list[int]:
@@ -80,11 +80,17 @@ def pure_component_weighted_mse_loss(
     predictions: torch.Tensor,
     targets: torch.Tensor,
     x1_values: torch.Tensor,
+    model: nn.Module,
     pure_component_loss_weight: float = 1.0,
     pure_component_atol: float = 1e-6,
+    l1_loss_weight: float = 1e-5,
 ) -> torch.Tensor:
-    """Compute MSE plus an extra MSE term for pure-component points."""
+    """
+    Compute MSE plus an extra MSE term for pure-component points,
+    with L1 regularization on model parameters.
+    """
     base_loss = nn.functional.mse_loss(predictions, targets)
+    l1_loss = sum(param.abs().sum() for param in model.parameters())
 
     flattened_x1 = x1_values.reshape(-1)
     pure_component_mask = torch.isclose(
@@ -96,13 +102,15 @@ def pure_component_weighted_mse_loss(
         torch.ones_like(flattened_x1),
         atol=pure_component_atol,
     )
-    if not pure_component_mask.any():
-        return base_loss
 
-    squared_errors = (predictions.reshape(-1) - targets.reshape(-1)) ** 2
-    pure_component_loss = squared_errors[pure_component_mask].mean()
+    loss = base_loss + l1_loss_weight * l1_loss
 
-    return base_loss + pure_component_loss_weight * pure_component_loss
+    if pure_component_mask.any():
+        squared_errors = (predictions.reshape(-1) - targets.reshape(-1)) ** 2
+        pure_component_loss = squared_errors[pure_component_mask].mean()
+        loss = loss + pure_component_loss_weight * pure_component_loss
+
+    return loss
 
 
 def plot_fold_results(
@@ -150,8 +158,11 @@ def train_fnn_fold(
     min_delta: float = 1e-4,
     pure_component_loss_weight: float = 1.0,
     pure_component_atol: float = 1e-6,
+    l1_loss_weight: float = 1e-5,
+    random_state: int | None = 42,
 ) -> tuple[list[float], list[float], torch.Tensor]:
     """Train the FNN for one fold and return loss histories and predictions."""
+    set_torch_seed(random_state)
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
     x1_train = x_train[:, 0]
@@ -170,8 +181,10 @@ def train_fnn_fold(
             train_predictions,
             y_train,
             x1_train,
+            model,
             pure_component_loss_weight=pure_component_loss_weight,
             pure_component_atol=pure_component_atol,
+            l1_loss_weight=l1_loss_weight,
         )
 
         optimizer.zero_grad()
@@ -185,8 +198,10 @@ def train_fnn_fold(
                 val_predictions,
                 y_val,
                 x1_val,
+                model,
                 pure_component_loss_weight=pure_component_loss_weight,
                 pure_component_atol=pure_component_atol,
+                l1_loss_weight=l1_loss_weight,
             )
 
         train_losses.append(train_loss.detach().cpu().item())
@@ -227,8 +242,11 @@ def train_deeponet_fold(
     min_delta: float = 1e-4,
     pure_component_loss_weight: float = 1.0,
     pure_component_atol: float = 1e-6,
+    l1_loss_weight: float = 1e-5,
+    random_state: int | None = 42,
 ) -> tuple[list[float], list[float], torch.Tensor]:
     """Train the DeepONet for one fold and return loss histories and predictions."""
+    set_torch_seed(random_state)
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
     x1_train = trunk_train[:, 0]
@@ -247,8 +265,10 @@ def train_deeponet_fold(
             train_predictions,
             y_train,
             x1_train,
+            model,
             pure_component_loss_weight=pure_component_loss_weight,
             pure_component_atol=pure_component_atol,
+            l1_loss_weight=l1_loss_weight,
         )
 
         optimizer.zero_grad()
@@ -262,8 +282,10 @@ def train_deeponet_fold(
                 val_predictions,
                 y_val,
                 x1_val,
+                model,
                 pure_component_loss_weight=pure_component_loss_weight,
                 pure_component_atol=pure_component_atol,
+                l1_loss_weight=l1_loss_weight,
             )
 
         train_losses.append(train_loss.detach().cpu().item())
