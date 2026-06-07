@@ -12,7 +12,7 @@ from matplotlib.figure import Figure
 from sklearn.preprocessing import StandardScaler
 from typing import Any
 
-from biofuels_sciml.deeponets import DeepONet, transform_except_x1
+from biofuels_sciml.deeponets import DeepONet, FNN, transform_except_x1
 
 
 @define
@@ -61,6 +61,28 @@ def restore_deeponet_from_artifact(
     return model
 
 
+def restore_fnn_from_artifact(
+    artifact: Mapping[str, Any],
+    input_dim: int,
+    device: torch.device,
+    output_dim: int = 1,
+    state_dict_key: str = "model_state_dict",
+    model_params_key: str = "model_params",
+    model_params: Mapping[str, Any] | None = None,
+) -> FNN:
+    """Restore an FNN model from a saved fold artifact."""
+    resolved_model_params = dict(model_params or artifact.get(model_params_key, {}))
+    model = FNN(
+        input_dim=input_dim,
+        output_dim=output_dim,
+        **resolved_model_params,
+    ).to(device)
+    model.load_state_dict(artifact[state_dict_key])
+    model.eval()
+
+    return model
+
+
 def predict_deeponet_flash_point(
     data: pd.DataFrame,
     model: DeepONet,
@@ -80,6 +102,26 @@ def predict_deeponet_flash_point(
     model.eval()
     with torch.no_grad():
         predictions = model(branch_tensor, trunk_tensor)
+
+    return _as_prediction_array(predictions)
+
+
+def predict_fnn_flash_point(
+    data: pd.DataFrame,
+    model: FNN,
+    scaler: StandardScaler,
+    feature_columns: Sequence[str],
+    device: torch.device,
+) -> np.ndarray:
+    """Predict flash point values with an FNN from DataFrame columns."""
+    features = data.loc[:, list(feature_columns)].to_numpy()
+    scaled_features = transform_except_x1(scaler, features)
+
+    feature_tensor = torch.tensor(scaled_features, dtype=torch.float32).to(device)
+
+    model.eval()
+    with torch.no_grad():
+        predictions = model(feature_tensor)
 
     return _as_prediction_array(predictions)
 
@@ -295,6 +337,63 @@ def evaluate_deeponet_binary_system_predictions(
             branch_scaler=branch_scaler,
             branch_columns=branch_columns,
             trunk_columns=trunk_columns,
+            device=device,
+        ),
+        reference_substance=reference_substance,
+        prediction_column=prediction_column,
+        model_name=model_name,
+        title=title,
+        plot=plot,
+        ax=ax,
+    )
+    result.artifact = best_artifact
+    result.model = model
+
+    return result
+
+
+def evaluate_fnn_binary_system_predictions(
+    data: pd.DataFrame,
+    fold_artifacts: Sequence[Mapping[str, Any]],
+    input_dim: int,
+    device: torch.device,
+    feature_columns: Sequence[str],
+    reference_substance: str,
+    prediction_column: str = "predicted_FP",
+    model_name: str = "FNN",
+    title: str | None = None,
+    metric_key: str = "rmse (K)",
+    scaler_key: str = "fnn_scaler",
+    state_dict_key: str = "model_state_dict",
+    model_params_key: str = "model_params",
+    model_params: Mapping[str, Any] | None = None,
+    output_dim: int = 1,
+    plot: bool = True,
+    ax: Axes | None = None,
+) -> BinarySystemEvaluationResult:
+    """Evaluate a binary-system scenario using the best FNN fold artifact."""
+    if not fold_artifacts:
+        raise ValueError("fold_artifacts must contain at least one artifact.")
+
+    best_artifact = min(fold_artifacts, key=lambda artifact: artifact[metric_key])
+    model = restore_fnn_from_artifact(
+        best_artifact,
+        input_dim=input_dim,
+        device=device,
+        output_dim=output_dim,
+        state_dict_key=state_dict_key,
+        model_params_key=model_params_key,
+        model_params=model_params,
+    )
+    scaler = best_artifact[scaler_key]
+
+    result = evaluate_binary_system_predictions(
+        data=data,
+        predict=lambda frame: predict_fnn_flash_point(
+            frame,
+            model=model,
+            scaler=scaler,
+            feature_columns=feature_columns,
             device=device,
         ),
         reference_substance=reference_substance,
